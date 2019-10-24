@@ -1,0 +1,55 @@
+﻿@page "/fetchdata"
+@inherits FetchDataBase
+
+<h1>Music Library</h1>
+
+@if (albumDtos.Count == 0)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th style="text-align: left">Artist</th>
+				<th style="text-align: left">Artists</th>
+				<th style="text-align: left">Title</th>
+				<th style="text-align: left">Label</th>
+
+				<th style="text-align: center">Year</th>
+				<th style="text-align: center">Release Year</th>
+
+				<th style="text-align: center">Mono</th>
+				<th style="text-align: center">45 RPM</th>
+				<th style="text-align: center">Rating</th>
+
+				<th style="text-align: right">Number</th>
+
+				<th style="text-align: left">Notes</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var albumDto in albumDtos)
+			{
+				<tr>
+					<td style="text-align: left">@albumDto.Artist</td>
+					<td style="text-align: left">@albumDto.Artists</td>
+					<td style="text-align: left">@albumDto.Title</td>
+					<td style="text-align: left">@albumDto.Label</td>
+
+					<td style="text-align: center">@albumDto.Year</td>
+					<td style="text-align: center">@albumDto.ReleaseYear</td>
+
+					<td style="text-align: center">@albumDto.IsMono</td>
+					<td style="text-align: center">@albumDto.Is45rpm</td>
+					<td style="text-align: center">@albumDto.Rating</td>
+
+					<td style="text-align: right">@albumDto.Number</td>
+
+					<td style="text-align: left">@albumDto.Notes</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
