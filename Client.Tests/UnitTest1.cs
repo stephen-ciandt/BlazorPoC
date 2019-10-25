@@ -1,11 +1,11 @@
 using Xunit;
 
-namespace MicrosoftLibraryServerTests
+namespace MusicLibrary.Client.Tests
 {
 	public class UnitTest1
 	{
 		[Fact]
-		public void Test1()
+		public void shouldDoSomething()
 		{
 			// Arrange
 			var fullName = "Stephen Cousins";
