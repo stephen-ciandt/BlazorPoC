@@ -14,6 +14,7 @@ namespace MusicLibrary.Client.Pages
 		[Inject]
 		protected HttpClient? HttpClient { get; set; }
 
+		protected bool isLoaded = false;
 		protected IReadOnlyCollection<AlbumDto> albumDtos = new List<AlbumDto>();
 
 		protected override async Task OnInitializedAsync()
@@ -21,6 +22,7 @@ namespace MusicLibrary.Client.Pages
 			if (HttpClient == null) return;
 
 			albumDtos = await HttpClient.GetJsonAsync<AlbumDto[]>("Album");
+			isLoaded = true;
 		}
 
 		public int Multiply(int a, int b)

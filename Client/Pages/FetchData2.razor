@@ -1,0 +1,11 @@
+﻿@page "/fetchdata2"
+@inherits FetchData2Base
+
+<h1>Music Library</h1>
+
+<button class="btn btn-primary" @onclick="GetGuid">Generate Guid</button>
+
+@if (isLoaded)
+{
+	<strong>@guid</strong>
+}
