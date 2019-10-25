@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -20,6 +21,11 @@ namespace MusicLibrary.Client.Pages
 			if (HttpClient == null) return;
 
 			albumDtos = await HttpClient.GetJsonAsync<AlbumDto[]>("Album");
+		}
+
+		public int Multiply(int a, int b)
+		{
+			return Math.Abs(a) * Math.Abs(b);
 		}
 	}
 }

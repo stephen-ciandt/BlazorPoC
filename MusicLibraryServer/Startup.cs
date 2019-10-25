@@ -29,8 +29,12 @@ namespace MusicLibraryServer
 			services.AddScoped<IAlbumRepository, AlbumRepository>();
 
 			// Entity Framework
+			//services.AddDbContextPool<MusicContext>(
+			//	options => options.UseSqlServer(configuration.GetConnectionString("AlbumContext")));
+			//services.AddDbContextPool<MusicContext>(
+			//	options => options.UseSqlServer(configuration.GetConnectionString("AlbumContextIS")));
 			services.AddDbContextPool<MusicContext>(
-				options => options.UseSqlServer(configuration.GetConnectionString("AlbumContext")));
+				options => options.UseSqlServer(configuration.GetConnectionString("AlbumContextAzure")));
 
 			// OKTA
 			//services.AddAuthorizationCore();

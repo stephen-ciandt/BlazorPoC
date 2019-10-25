@@ -36,9 +36,12 @@ namespace MusicLibrary.Server
 			services.AddScoped<IAlbumRepository, AlbumRepository>();
 
 			// Entity Framework
+			//services.AddDbContextPool<MusicContext>(
+			//	options => options.UseSqlServer(configuration.GetConnectionString("AlbumContext")));
+			//services.AddDbContextPool<MusicContext>(
+			//	options => options.UseSqlServer(configuration.GetConnectionString("AlbumContextIS")));
 			services.AddDbContextPool<MusicContext>(
-				options => options.UseSqlServer(configuration.GetConnectionString("AlbumContext")));
-
+				options => options.UseSqlServer(configuration.GetConnectionString("AlbumContextAzure")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
