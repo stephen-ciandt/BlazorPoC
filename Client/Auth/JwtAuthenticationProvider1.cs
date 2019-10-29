@@ -14,7 +14,7 @@ using MusicLibrary.Client.Helpers;
 
 namespace MusicLibrary.Client.Auth
 {
-	public class JWTAuthenticationProvider : AuthenticationStateProvider, ILoginService
+	public class JwtAuthenticationProvider : AuthenticationStateProvider, ILoginService
 	{
 		private static readonly string TOKEN_KEY = "TOKENKEY";
 
@@ -24,7 +24,7 @@ namespace MusicLibrary.Client.Auth
 		private AuthenticationState Anonymous =>
 			new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
 
-		public JWTAuthenticationProvider(IJSRuntime js, HttpClient httpClient)
+		public JwtAuthenticationProvider(IJSRuntime js, HttpClient httpClient)
 		{
 			this.js = js;
 			this.httpClient = httpClient;
