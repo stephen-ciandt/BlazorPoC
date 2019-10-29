@@ -1,12 +1,17 @@
+using System;
 using System.Linq;
+using System.Text;
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 using MusicLibrary.Server.Models;
 using MusicLibrary.Server.Services;
@@ -26,6 +31,41 @@ namespace MusicLibrary.Server
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			// Active Directory (video)
+			services.AddIdentity<IdentityUser, IdentityRole>()
+				.AddEntityFrameworkStores<MusicContext>()
+				.AddDefaultTokenProviders();
+
+			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+			.AddJwtBearer(options =>
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuer = false,
+					ValidateAudience = false,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true,
+					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"])),
+					ClockSkew = TimeSpan.Zero
+				}
+			);
+
+			// Active Directory
+			//services.Configure<CookiePolicyOptions>(options =>
+			//{
+			//	options.CheckConsentNeeded = context => true;
+			//	options.MinimumSameSitePolicy = SameSiteMode.None;
+
+			//});
+			//services.AddAuthentication(AzureADDefaults.AuthenticationScheme);
+			////services.AddAzureAD(options => Configuration.Bind("AzureAd", options));
+
+			//services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+			//{
+			//	options.Authority = options.Authority + "/v2.0/";
+			//	options.TokenValidationParameters.ValidateIssuer = false;
+			//});
+
+			//
 			services.AddMvc();
 			services.AddResponseCompression(opts =>
 			{
@@ -59,6 +99,10 @@ namespace MusicLibrary.Server
 			app.UseClientSideBlazorFiles<Client.Startup>();
 
 			app.UseRouting();
+
+			// Active Directory (video)
+			app.UseAuthentication();
+			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{

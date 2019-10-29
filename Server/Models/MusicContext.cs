@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace MusicLibrary.Server.Models
 {
-	public class MusicContext : DbContext
+	public class MusicContext : IdentityDbContext
 	{
 		public DbSet<Album>? Albums { get; set; }
 
@@ -13,6 +14,7 @@ namespace MusicLibrary.Server.Models
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			base.OnModelCreating(modelBuilder);
 			modelBuilder.Seed();
 		}
 	}

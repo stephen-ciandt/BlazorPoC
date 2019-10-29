@@ -6,6 +6,8 @@ namespace MusicLibrary.Server
 {
 	public class Program
 	{
+		protected Program() { }
+
 		public static void Main(string[] args)
 		{
 			BuildWebHost(args).Run();
@@ -14,6 +16,7 @@ namespace MusicLibrary.Server
 		public static IWebHost BuildWebHost(string[] args) =>
 			WebHost.CreateDefaultBuilder(args)
 				.UseConfiguration(new ConfigurationBuilder()
+					.AddJsonFile("appsettings.json", optional:false, reloadOnChange:true)
 					.AddCommandLine(args)
 					.Build())
 				.UseStartup<Startup>()
