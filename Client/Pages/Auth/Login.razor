@@ -1,13 +1,13 @@
-﻿@page "/register"
+﻿@page "/login"
 @inject HttpClient httpClient
 @inject ILoginService loginService
 @inject NavigationManager navigationManager
 
 @using MusicLibrary.Client.Auth;
 
-<h3>Register</h3>
+<h3>Log in</h3>
 
-<EditForm Model="userInfo" OnValidSubmit="CreateUser">
+<EditForm Model="userInfo" OnValidSubmit="LoginUser">
 	<DataAnnotationsValidator />
 
 	<div class="form-group">
@@ -26,7 +26,7 @@
 		</div>
 	</div>
 
-	<button type="submit" class="btn btn-primary">Register</button>
+	<button type="submit" class="btn btn-primary">Login</button>
 
 </EditForm>
 
@@ -34,9 +34,9 @@
 {
 	private UserInfo userInfo = new UserInfo();
 
-	public async Task CreateUser()
+	public async Task LoginUser()
 	{
-		var result = await httpClient.PostJsonAsync<UserToken>("api/accounts/create", userInfo);
+		var result = await httpClient.PostJsonAsync<UserToken>("api/accounts/login", userInfo);
 		await loginService.Login(result?.Token ?? string.Empty);
 		navigationManager.NavigateTo("");
 	}
