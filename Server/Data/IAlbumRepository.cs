@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace MusicLibrary.Server.Models
+using MusicLibrary.Server.Models;
+
+namespace MusicLibrary.Server.Data
 {
 	public interface IAlbumRepository
 	{

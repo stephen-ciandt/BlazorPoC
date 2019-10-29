@@ -3,7 +3,9 @@ using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace MusicLibrary.Server.Models
+using MusicLibrary.Server.Models;
+
+namespace MusicLibrary.Server.Data
 {
 	public class AlbumRepository : IAlbumRepository
 	{
