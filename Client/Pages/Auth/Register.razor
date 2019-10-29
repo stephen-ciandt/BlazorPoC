@@ -1,9 +1,5 @@
 ﻿@page "/register"
-@inject HttpClient httpClient
-@inject ILoginService loginService
-@inject NavigationManager navigationManager
-
-@using MusicLibrary.Client.Auth;
+@inherits RegisterBase
 
 <h3>Register</h3>
 
@@ -29,15 +25,3 @@
 	<button type="submit" class="btn btn-primary">Register</button>
 
 </EditForm>
-
-@code
-{
-	private UserInfo userInfo = new UserInfo();
-
-	public async Task CreateUser()
-	{
-		var result = await httpClient.PostJsonAsync<UserToken>("api/accounts/create", userInfo);
-		await loginService.Login(result?.Token ?? string.Empty);
-		navigationManager.NavigateTo("");
-	}
-}

@@ -1,18 +1,4 @@
 ﻿@page "/logout"
-@inject ILoginService loginService
-@inject NavigationManager navigationManager
-
-@using MusicLibrary.Client.Auth;
+@inherits LogoutBase
 
 <h3>Log out</h3>
-
-@code
-{
-	private UserInfo userInfo = new UserInfo();
-
-	protected async override Task OnInitializedAsync()
-	{
-		await loginService.Logout();
-		navigationManager.NavigateTo("");
-	}
-}

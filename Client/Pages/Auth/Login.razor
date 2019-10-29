@@ -1,9 +1,5 @@
 ﻿@page "/login"
-@inject HttpClient httpClient
-@inject ILoginService loginService
-@inject NavigationManager navigationManager
-
-@using MusicLibrary.Client.Auth;
+@inherits LoginBase
 
 <h3>Log in</h3>
 
@@ -29,15 +25,3 @@
 	<button type="submit" class="btn btn-primary">Login</button>
 
 </EditForm>
-
-@code
-{
-	private UserInfo userInfo = new UserInfo();
-
-	public async Task LoginUser()
-	{
-		var result = await httpClient.PostJsonAsync<UserToken>("api/accounts/login", userInfo);
-		await loginService.Login(result?.Token ?? string.Empty);
-		navigationManager.NavigateTo("");
-	}
-}

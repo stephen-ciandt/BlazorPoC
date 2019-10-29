@@ -17,9 +17,9 @@ namespace MusicLibrary.Server.Controllers
 	[ApiController]
 	public class AccountsController : ControllerBase
 	{
-		private readonly UserManager<IdentityUser>? _userManager;
-		private readonly SignInManager<IdentityUser>? _signInManager;
-		private readonly IConfiguration? _configuration;
+		private readonly UserManager<IdentityUser> _userManager;
+		private readonly SignInManager<IdentityUser> _signInManager;
+		private readonly IConfiguration _configuration;
 
 		public AccountsController(
 			UserManager<IdentityUser> userManager,
@@ -71,7 +71,7 @@ namespace MusicLibrary.Server.Controllers
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:key"]));
 			var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-			var expiration = DateTime.UtcNow.AddYears(1);
+			var expiration = DateTime.UtcNow.AddHours(2);
 
 			var token = new JwtSecurityToken(
 				issuer: null,

@@ -11,12 +11,12 @@ namespace MusicLibrary.Client
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddAuthorizationCore();
-			services.AddScoped<JWTAuthenticationProvider>();
-			services.AddScoped<AuthenticationStateProvider, JWTAuthenticationProvider>(
-				provider => provider.GetRequiredService<JWTAuthenticationProvider>()
+			services.AddScoped<JwtAuthenticationProvider>();
+			services.AddScoped<AuthenticationStateProvider, JwtAuthenticationProvider>(
+				provider => provider.GetRequiredService<JwtAuthenticationProvider>()
 			);
-			services.AddScoped<ILoginService, JWTAuthenticationProvider>(
-				provider => provider.GetRequiredService<JWTAuthenticationProvider>()
+			services.AddScoped<ILoginService, JwtAuthenticationProvider>(
+				provider => provider.GetRequiredService<JwtAuthenticationProvider>()
 			);
 		}
 
