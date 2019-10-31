@@ -8,7 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MusicLibraryMvc
+using MusicLibraryServerAD.Data;
+
+namespace MusicLibraryServerAD
 {
 	public class Startup
 	{
@@ -20,9 +22,9 @@ namespace MusicLibraryMvc
 		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
+		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// AD
 			services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
 				.AddAzureAD(options => Configuration.Bind("AzureAd", options));
 
@@ -33,10 +35,10 @@ namespace MusicLibraryMvc
 					.Build();
 				options.Filters.Add(new AuthorizeFilter(policy));
 			});
-			services.AddRazorPages();
 
-			//
-			//services.AddControllersWithViews();
+			services.AddRazorPages();
+			services.AddServerSideBlazor();
+			services.AddSingleton<WeatherForecastService>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,28 +50,24 @@ namespace MusicLibraryMvc
 			}
 			else
 			{
-				app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler("/Error");
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
 			app.UseRouting();
 
-			// AD
 			app.UseAuthentication();
-			//
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllerRoute(
-					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
-
-				// AD
-				endpoints.MapRazorPages();
+				endpoints.MapControllers();
+				endpoints.MapBlazorHub();
+				endpoints.MapFallbackToPage("/_Host");
 			});
 		}
 	}

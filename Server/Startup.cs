@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 
+using MusicLibrary.Server.Data;
 using MusicLibrary.Server.Models;
 using MusicLibrary.Server.Services;
 

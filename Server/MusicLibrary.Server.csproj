@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20191029122126_identity.cs" />
-    <Compile Remove="Migrations\20191029122126_identity.Designer.cs" />
+	<Compile Remove="Migrations\20191029122126_identity.cs" />
+	<Compile Remove="Migrations\20191029122126_identity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
