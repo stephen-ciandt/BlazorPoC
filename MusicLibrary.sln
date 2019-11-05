@@ -19,7 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibrary.Server.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibraryMvc", "MusicLibraryMvc\MusicLibraryMvc.csproj", "{584A782B-E9C1-4AAA-904D-630883745722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicLibraryServerAD", "MusicLibraryServerAD\MusicLibraryServerAD.csproj", "{69EFB01F-4F48-4DAA-92AC-EE92ED18765E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibraryServerAD", "MusicLibraryServerAD\MusicLibraryServerAD.csproj", "{69EFB01F-4F48-4DAA-92AC-EE92ED18765E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibraryServerADMT", "MusicLibraryServerADMT\MusicLibraryServerADMT.csproj", "{86AFEA44-EECF-4768-97E2-B486CD86956A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibraryServerADMT1", "MusicLibraryServerADMT1\MusicLibraryServerADMT1.csproj", "{9010F9C4-F14F-4FF9-81B5-A6E42BDA15DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KubernetesPoC", "KubernetesPoC\KubernetesPoC.csproj", "{DEB625DE-E08E-451D-9458-F1BF90964720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{69EFB01F-4F48-4DAA-92AC-EE92ED18765E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69EFB01F-4F48-4DAA-92AC-EE92ED18765E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69EFB01F-4F48-4DAA-92AC-EE92ED18765E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AFEA44-EECF-4768-97E2-B486CD86956A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AFEA44-EECF-4768-97E2-B486CD86956A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AFEA44-EECF-4768-97E2-B486CD86956A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AFEA44-EECF-4768-97E2-B486CD86956A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9010F9C4-F14F-4FF9-81B5-A6E42BDA15DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9010F9C4-F14F-4FF9-81B5-A6E42BDA15DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9010F9C4-F14F-4FF9-81B5-A6E42BDA15DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9010F9C4-F14F-4FF9-81B5-A6E42BDA15DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEB625DE-E08E-451D-9458-F1BF90964720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB625DE-E08E-451D-9458-F1BF90964720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB625DE-E08E-451D-9458-F1BF90964720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB625DE-E08E-451D-9458-F1BF90964720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
