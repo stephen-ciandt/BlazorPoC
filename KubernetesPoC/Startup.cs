@@ -35,6 +35,8 @@ namespace KubernetesPoC
 			// Entity Framework
 			services.AddDbContextPool<MusicContext>(
 				options => options.UseSqlServer(Configuration.GetConnectionString(CONNECTION_STRING_ALBUM_CONTEXT)));
+
+            services.Configure<DemoAppSettings>(Configuration.GetSection("DemoAppSettings"));  
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
